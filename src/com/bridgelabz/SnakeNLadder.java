@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class SnakeNLadder {
     static int POSITION=0; //current position
+    static int TOTAL_DIE_ROLL=0;
     static final int IS_LADDER=1;
     static final int IS_SNAKE=2;
     public static void main(String[] args) {
@@ -15,7 +16,7 @@ public class SnakeNLadder {
             action(dieNumber);
             System.out.println("Current Position : " + POSITION);
         }
-
+        System.out.println("Number of times die rolled : "+TOTAL_DIE_ROLL);
 
     }
 
@@ -24,7 +25,8 @@ public class SnakeNLadder {
         switch (option){
             case IS_LADDER:
                 System.out.println("Yay... you got a Ladder");
-                POSITION+=dieNumber;
+                if (POSITION+dieNumber<=100)
+                    POSITION+=dieNumber;
                 break;
             case IS_SNAKE:
                 System.out.println("Oops it's a Snake");
@@ -40,6 +42,7 @@ public class SnakeNLadder {
     private static int dieRoll() {
         Random random = new Random();
         int dieNumber = random.nextInt(6)+1;
+        TOTAL_DIE_ROLL++;
         return dieNumber;
 
     }
