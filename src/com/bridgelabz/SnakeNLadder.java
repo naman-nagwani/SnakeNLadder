@@ -2,8 +2,6 @@ package com.bridgelabz;
 
 import java.util.Random;
 
-import java.util.Random;
-
 public class SnakeNLadder {
     static int POSITION=0; //current position
     static final int IS_LADDER=1;
@@ -11,10 +9,12 @@ public class SnakeNLadder {
     public static void main(String[] args) {
         System.out.println("Welcome to Snake And ladder");
         System.out.println("Current Position : " + POSITION);
-        int dieNumber = dieRoll();
-        System.out.println("Die Number is : " +dieNumber);
-        action(dieNumber);
-        System.out.println("Current Position : "+ POSITION);
+        while (POSITION!=100) {
+            int dieNumber = dieRoll();
+            System.out.println("Die Number is : " +dieNumber);
+            action(dieNumber);
+            System.out.println("Current Position : " + POSITION);
+        }
 
 
     }
@@ -29,6 +29,8 @@ public class SnakeNLadder {
             case IS_SNAKE:
                 System.out.println("Oops it's a Snake");
                 POSITION-=dieNumber;
+                if (POSITION<0)
+                    POSITION =0;
                 break;
             default:
                 System.out.println("No Play");
